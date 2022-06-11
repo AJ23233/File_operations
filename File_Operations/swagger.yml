@@ -23,3 +23,24 @@ paths:
           description: Ping Successful
           schema:
             type: string
+
+  /v1/fetch_data:
+    get:
+      tags:
+      - "Document Operations"
+      summary: "fetch details"
+      description: "Fetch data from csv"
+      operationId: routes.fetch_details
+      produces:
+      - "application/json"
+      parameters:
+      - name: "rows"
+        in: "query"
+        description: "Number of rows to fetch"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: json response
+          
