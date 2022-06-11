@@ -1,0 +1,25 @@
+swagger: "2.0"
+info:
+  description: Swagger for File Operations
+  version: "1.0.0"
+  title: File Operations 
+consumes:
+  - application/json
+
+basePath: /
+
+paths:
+  /v1/ping:
+    get:
+      tags:
+      - "Health Check"
+      summary: "ping pong application"
+      description: "ping pong check"
+      operationId: routes.ping
+      responses:
+        500:
+          description: Server error
+        200:
+          description: Ping Successful
+          schema:
+            type: string
