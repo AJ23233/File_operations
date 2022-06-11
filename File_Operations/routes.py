@@ -34,3 +34,14 @@ def fetch_details():
 	rows = request.args.get('rows')
 	res = DocOps().fetch_data(rows)
 	return res
+
+@app.route("/v1/search_details")
+def search():
+	"""
+	This method is used for search operations to be performed on the file
+	input: rows - Numbers of rows to be fetched from file 
+	output: search response (json)   
+	"""
+	data = request.json
+	res = DocOps().search_data(data)
+	return res

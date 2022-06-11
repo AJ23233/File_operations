@@ -51,3 +51,19 @@ class DocOps:
 		except Exception as ex:
 			df = DataFrame()
 		return df
+
+	def search_data(self, query):
+		"""
+		this method is used to search data
+		"""
+		try:
+			df= read_csv(self.data)
+			for k,v in query.items():
+				if k in df.columns:
+					df = df[df[k]==v]
+
+			res = DocOps.replace_vals(df)
+			response = {"books":str(res.to_dict("records"))}
+		except Exception as ex:
+			response = {"error" : "Error while searching for data"}
+		return response
