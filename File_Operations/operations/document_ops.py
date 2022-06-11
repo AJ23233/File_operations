@@ -35,7 +35,7 @@ class DocOps:
 			res = DocOps.replace_vals(res)
 			response = {"books":str(res.to_dict("records"))}
 		except Exception as ex:
-			response = {"error" : "Error while searching for data"}
+			response = {"error" : "Error while fetching data"}
 		return response
 
 	@staticmethod
@@ -58,12 +58,14 @@ class DocOps:
 		"""
 		try:
 			df= read_csv(self.data)
+			if len([i for i in query.keys() if i in df.columns])==0:
+				raise Exception("Requested Column is not present in the data")
+				
 			for k,v in query.items():
 				if k in df.columns:
 					df = df[df[k]==v]
-
 			res = DocOps.replace_vals(df)
 			response = {"books":str(res.to_dict("records"))}
 		except Exception as ex:
-			response = {"error" : "Error while searching for data"}
+			response = {"error" : f"Error while searching for data is : {str(ex)}"}
 		return response
