@@ -1,3 +1,7 @@
+# Filename: main.py
+# Description: This file is responsible for starting application from routes
+# Author: Ajay Vanara
+
 from routes import app
 
 app.add_api("swagger.yml")
