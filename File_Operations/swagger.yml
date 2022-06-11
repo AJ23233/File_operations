@@ -24,6 +24,7 @@ paths:
           schema:
             type: string
 
+
   /v1/fetch_data:
     get:
       tags:
@@ -43,4 +44,25 @@ paths:
       responses:
         200:
           description: json response
-          
+
+  /v1/search_file:
+    post:
+      tags:
+      - "Document Operations"
+      summary: "find details"
+      description: ""
+      operationId: "routes.search"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "order placed for purchasing the pet"
+        required: true
+        schema:
+          type: "object"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid Order"
